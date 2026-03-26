@@ -5,6 +5,7 @@ import { TypographyH1 } from "@/components/ui/typography-h1";
 import { Button } from "@/components/ui/button";
 import { TableParts } from "./table";
 import { componentCategories } from "@/lib/constants";
+import { SaveBuildDialog } from "./save-build-dialog";
 
 export const CurrentBuild = () => {
   const [selectedByCategory, setSelectedByCategory] = useState<
@@ -29,6 +30,11 @@ export const CurrentBuild = () => {
         <TableParts
           components={componentCategories}
           onSelectedComponent={onSelectComponent}
+          selectedByCategory={selectedByCategory}
+        />
+        <SaveBuildDialog
+          open={saveDialogOpen}
+          onOpenChange={setSaveDialogOpen}
           selectedByCategory={selectedByCategory}
         />
       </div>

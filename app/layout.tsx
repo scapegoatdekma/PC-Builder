@@ -4,47 +4,48 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
 import { HeaderVisibility } from "@/components/header-visibility";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Сборщик ПК",
-  description: "Сервис для подбора комплектующих для сборки ПК",
+    title: "Сборщик ПК",
+    description: "Сервис для подбора комплектующих для сборки ПК",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html
-      lang="ru"
-      className={cn(
-        "h-full",
-        "antialiased",
-        geistSans.variable,
-        geistMono.variable,
-        "font-sans",
-        inter.variable,
-      )}
-    >
-      <body className="min-h-full flex flex-col">
-        <HeaderVisibility>
-          <Header />
-        </HeaderVisibility>
-        {children}
-      </body>
-    </html>
-  );
+    return (
+        <html
+            lang="ru"
+            className={cn(
+                "h-full",
+                "antialiased",
+                geistSans.variable,
+                geistMono.variable,
+                "font-sans",
+                inter.variable,
+            )}>
+            <body className="min-h-full flex flex-col">
+                <HeaderVisibility>
+                    <Header />
+                </HeaderVisibility>
+                {children}
+                <Toaster position="top-center" />
+            </body>
+        </html>
+    );
 }
