@@ -1,7 +1,7 @@
 export default function DashboardLayouT({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return <div className="container mx-auto max-w-5xl mt-8">{children}</div>;
+    return <div className="container mx-auto max-w-1xl mt-8">{children}</div>;
 }

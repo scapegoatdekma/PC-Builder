@@ -35,3 +35,30 @@ export async function getPublicBuilds(userId: string) {
         },
     });
 }
+
+export async function getBuildToEdit(id: string) {
+    return await prisma.build.findFirst({
+        where: { id },
+        include: {
+            components: {
+                include: {
+                    component: true,
+                },
+            },
+        },
+    });
+}
+
+export async function getPopularBuilds(limit = 3) {
+    return prisma.build.findMany({
+        where: {
+            isPublic: true,
+            likes: { some: {} },
+        },
+        orderBy: { likes: { _count: "desc" } },
+        take: limit,
+        include: {
+            _count: { select: { likes: true } },
+        },
+    });
+}

@@ -46,7 +46,7 @@ export function BuildCard({ build, children }: Props) {
                 </div>
                 <div className="shrink-0">
                     <Button>
-                        <Link href={`/builds/${build.id}`}>
+                        <Link href={`/builds/${build.id}/edit`}>
                             <Pencil className="h-4 w-4" />
                         </Link>
                     </Button>
