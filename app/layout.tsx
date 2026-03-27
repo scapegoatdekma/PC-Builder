@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
 import { HeaderVisibility } from "@/components/header-visibility";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -36,16 +37,20 @@ export default function RootLayout({
                 "antialiased",
                 geistSans.variable,
                 geistMono.variable,
-                "font-sans",
-                inter.variable,
-            )}>
-            <body className="min-h-full flex flex-col">
-                <HeaderVisibility>
-                    <Header />
-                </HeaderVisibility>
-                {children}
-                <Toaster position="top-center" />
-            </body>
-        </html>
-    );
+        "font-sans",
+        inter.variable,
+      )}
+      suppressHydrationWarning
+    >
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider>
+          <HeaderVisibility>
+            <Header />
+          </HeaderVisibility>
+          {children}
+          <Toaster position="top-center" />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
 }

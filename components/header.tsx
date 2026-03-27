@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { auth } from "@/auth";
 import { Button } from "./ui/button";
+import { ThemeToggle } from "./theme-toggle";
 import { TypographyH3 } from "./ui/typography-h3";
 import { HeaderAuthButton, HeaderNav } from "./header-nav";
 
@@ -28,7 +29,10 @@ export async function Header() {
         </div>
 
         <div className="justify-self-end">
-          {session?.user ? <HeaderAuthButton /> : <div className="w-16" />}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            {session?.user ? <HeaderAuthButton /> : <div className="w-16" />}
+          </div>
         </div>
       </div>
     </header>
